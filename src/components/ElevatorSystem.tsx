@@ -165,7 +165,28 @@ const ElevatorSystem = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Elevator System</Text>
-  
+      <View style={styles.content}>
+        <View style={styles.elevatorContainer}>
+          {elevators.map((elevator) => (
+            <Elevator
+              key={elevator.id}
+              id={elevator.id}
+              currentFloor={elevator.currentFloor}
+              targetFloor={elevator.targetFloor}
+              status={elevator.status}
+              direction={elevator.direction}
+              people={elevator.people}
+              maxFloor={MAX_FLOOR}
+            />
+          ))}
+        </View>
+        <ButtonBoard
+          onRequest={handleElevatorRequest}
+          maxFloor={MAX_FLOOR}
+          currentFloor={currentFloor}
+          onFloorChange={handleFloorChange}
+        />
+      </View>
     </View>
   )
 }
